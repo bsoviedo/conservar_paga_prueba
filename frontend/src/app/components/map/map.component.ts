@@ -4,6 +4,7 @@ import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 import Graphic from "@arcgis/core/Graphic";
+import Legend from "@arcgis/core/widgets/Legend";
 
 import Point from "@arcgis/core/geometry/Point";
 import Polygon from "@arcgis/core/geometry/Polygon";
@@ -49,6 +50,18 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeMap();
+
+    this.mapCommunicationService.shouldReloadLayers$.subscribe((shouldReload: boolean) => {
+      if (shouldReload) {
+        this.initLayersFromBackend(null);
+        this.mapCommunicationService.shouldReloadLayers.next(false);
+      }
+    });
+
+    // Suscribirse a cambios de filtro
+    this.mapCommunicationService.filtro$.subscribe((filtro) => {
+      this.initLayersFromBackend(filtro);
+    });
   }
 
   ngOnDestroy(): void {
@@ -65,12 +78,19 @@ export class MapComponent implements OnInit, OnDestroy {
       zoom: 6,
     });
 
+    // Agregar widget de leyenda
+    const legend = new Legend({
+      view: this.view,
+      style: 'card'
+    });
+    this.view.ui.add(legend, "bottom-right");
+
     this.mapCommunicationService.setMapView(this.view);
 
     this.initLayersFromBackend();
   }
 
-  private async initLayersFromBackend(): Promise<void> {
+  private async initLayersFromBackend(filtro?: { categoria?: string; nombre?: string } | null): Promise<void> {
     if (!this.view?.map) return;
 
     // Limpia capa anterior si recargas
@@ -80,7 +100,21 @@ export class MapComponent implements OnInit, OnDestroy {
       this.backendLayer = null;
     }
 
-    const resp = await fetch("http://localhost:8000/features/");
+    // Construir URL con parámetros de filtro
+    let url = "http://localhost:8000/features/";
+    const params = new URLSearchParams();
+    
+    if (filtro?.categoria) {
+      params.append('categoria', filtro.categoria);
+    } else if (filtro?.nombre) {
+      params.append('nombre', filtro.nombre);
+    }
+    
+    if (params.toString()) {
+      url += '?' + params.toString();
+    }
+
+    const resp = await fetch(url);
     if (!resp.ok) {
       console.error("Backend error:", resp.status, await resp.text());
       return;
@@ -163,6 +197,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
     this.backendLayer = graphicsLayer;
     this.view.map.add(graphicsLayer);
+
+    this.mapCommunicationService['backendHasLayers'].next(true);
 
    
   }

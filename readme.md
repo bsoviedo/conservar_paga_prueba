@@ -41,3 +41,40 @@ se usa el mapa de OSM que no requiere api key para cargar los tiles
 En este escenario subi el ambiente virtual completo al repo (no es buena práctica, pero por cuestión de tiempo lo preferí de esa forma), por tanto, ya esta todo listo para correr. Solo se requieren 2 pasos:
 
 
+1- activar el env
+
+'''
+/env/Scripts/activate
+'''
+
+y luego en la carpeta backend
+
+'''
+uvicorn app.main:app --reload
+'''
+
+se abrira en el puerto 8000
+
+### 2- iniciar el frontend
+
+ir a la carpeta del frontend
+
+'''
+cd frontend
+'''
+
+y correr npm start 
+
+'''
+npm start
+'''
+
+de nuevo, por tema de tiempo dejo el node_modules (no es buena práctiva igual), pero ya se puede correr
+
+no obstante, se puede hacer
+
+'''
+npm install
+'''
+
+para asegurarse

@@ -38,6 +38,75 @@
 
     <div *ngIf="backendHasLayers">
         <p> El backend tiene capas cargadas </p>
+        
+        <!-- Filtros -->
+        <div class="filters-section mb-3">
+          <h5>Filtros</h5>
+          
+          <!-- Filtro por categoría -->
+          <div class="mb-2">
+            <label class="form-label">Por categoría:</label>
+            <div class="btn-group d-flex" role="group">
+              <button 
+                *ngFor="let cat of categorias"
+                type="button" 
+                class="btn btn-sm"
+                [class.btn-success]="categoriaSeleccionada === cat"
+                [class.btn-outline-secondary]="categoriaSeleccionada !== cat"
+                (click)="filtrarPorCategoria(cat)">
+                {{ cat }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Filtro por nombre -->
+          <div class="mb-2">
+            <label class="form-label">Por nombre (mín. 3 caracteres):</label>
+            <input 
+              type="text" 
+              class="form-control form-control-sm"
+              [(ngModel)]="nombreFiltro"
+              (input)="onNombreChange()"
+              placeholder="Escribe el nombre..."/>
+          </div>
+
+          <!-- Botón para quitar filtros -->
+          <button 
+            *ngIf="filtroActivo"
+            type="button"
+            class="btn btn-sm btn-warning w-100"
+            (click)="quitarFiltros()">
+            Quitar filtros
+          </button>
+        </div>
+        
+        <!-- Switch para tipo de estadística -->
+        <div class="stats-controls mb-3">
+          <h5>Estadística</h5>
+          <div class="btn-group" role="group">
+            <button 
+              type="button" 
+              class="btn btn-sm"
+              [class.btn-primary]="statType === 'count'"
+              [class.btn-outline-primary]="statType !== 'count'"
+              (click)="onStatTypeChange('count')">
+              Conteo
+            </button>
+            <button 
+              type="button" 
+              class="btn btn-sm"
+              [class.btn-primary]="statType === 'area'"
+              [class.btn-outline-primary]="statType !== 'area'"
+              (click)="onStatTypeChange('area')">
+             Área
+            </button>
+          </div>
+        </div>
+
+        <!-- Canvas para la gráfica -->
+        <div class="chart-container">
+          <canvas #statsChart></canvas>
+        </div>
     </div>
 
 
