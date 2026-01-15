@@ -1,0 +1,89 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-74.082, 4.609] },
+      "properties": {
+        "id": 1,
+        "nombre": "punto1",
+        "categoria": "cultivo"
+  
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.563, 6.252] },
+      "properties": {
+        "id": 2,
+        "nombre": "punto2",
+        "categoria": "conservación"
+
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.532, 3.451] },
+      "properties": {
+        "id": 3,
+        "nombre": "punto3",
+        "categoria": "restauración"
+      
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.479, 10.391] },
+      "properties": {
+        "id": 4,
+        "nombre": "punto4",
+        "categoria": "cultivo"
+
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.119, 7.119] },
+      "properties": {
+        "id": 5,
+        "nombre": "punto5",
+        "categoria": "conservación"
+
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-74.803, 10.968] },
+      "properties": {
+        "id": 6,
+        "nombre": "punto6",
+        "categoria": "restauración"
+
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-74.135, 4.711],
+            [-74.118, 4.709],
+            [-74.106, 4.700],
+            [-74.108, 4.687],
+            [-74.121, 4.682],
+            [-74.138, 4.689],
+            [-74.146, 4.701],
+            [-74.135, 4.711]
+          ]
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "nombre": "poligono1",
+        "categoria": "conservación"
+      
+      }
+    }
+  ]
+}
