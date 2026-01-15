@@ -1,0 +1,61 @@
+.sidebar-container {
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.sidebar-content {
+  color: #666;
+}
+
+.control-section {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.control-section h3 {
+  margin: 0 0 15px 0;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+.control-section p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.control-button {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 5px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.3s;
+}
+
+.control-button:hover {
+  background-color: #0056b3;
+}
+
+.control-button:active {
+  background-color: #004085;
+}

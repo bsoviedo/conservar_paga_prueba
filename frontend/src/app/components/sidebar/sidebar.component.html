@@ -1,0 +1,46 @@
+<div class="sidebar-container">
+ <!--  <div class="sidebar-header">
+    <h2>Utilidades</h2>
+  </div>
+  <div class="sidebar-content">
+    <div class="control-section">
+      <h3>Información del Mapa</h3>
+      <p><strong>Zoom:</strong> {{ currentZoom | number:'1.2-2' }}</p>
+      <p><strong>Centro:</strong></p>
+      <p>Lat: {{ currentCenter.latitude | number:'1.4-4' }}</p>
+      <p>Lon: {{ currentCenter.longitude | number:'1.4-4' }}</p>
+    </div>
+
+    <div class="control-section">
+      <h3>Controles de Zoom</h3>
+      <button (click)="zoomIn()" class="control-button">Zoom In (+)</button>
+      <button (click)="zoomOut()" class="control-button">Zoom Out (-)</button>
+    </div>
+
+    <div class="control-section">
+      <h3>Ubicaciones Rápidas</h3>
+      <button (click)="goToBogota()" class="control-button">Ir a Bogotá</button>
+      <button (click)="goToMedellin()" class="control-button">Ir a Medellín</button>
+    </div>
+  </div> -->
+
+  <div>
+   <h2> Prueba conservar paga</h2>
+  </div>
+  <div>
+
+
+    <div *ngIf="!backendHasLayers"> 
+        <p> Actualmente el backend no tiene capa, debes cargar un archivo</p>
+        <input type="file" (change)="onFileSelected($event)" class="form-control mb-2"/> 
+        <button (click)="loadGeoJson()" class="btn btn-primary">Cargar GeoJSON de prueba</button>
+    </div>
+
+    <div *ngIf="backendHasLayers">
+        <p> El backend tiene capas cargadas </p>
+    </div>
+
+
+  </div>
+
+</div>
